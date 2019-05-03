@@ -1,17 +1,28 @@
 import React, { Component, Fragment } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <Container>
-        <Button>Hi</Button>
-        <Button danger />
-      </Container>
+      <>
+        <Container>
+          <Button>Hi</Button>
+          <Button danger />
+          <Anchor href="http://naver.com">naver</Anchor>
+        </Container>
+      </>
     );
   }
 }
+
+createGlobalStyle`
+  body{
+    padding:0;
+    margin:0;
+    
+  }
+`;
 
 const Container = styled.div`
   height: 100vh;
@@ -31,6 +42,10 @@ const Button = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+const Anchor = styled(Button.withComponent("a"))`
+  text-decoration: none;
 `;
 
 export default App;
